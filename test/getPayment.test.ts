@@ -4,10 +4,11 @@ import { handler } from '../src/getPayment';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
 describe('When the user requests the records for a specific payment', () => {
+
     it('Returns the payment matching their input parameter.', async () => {
         const paymentId = randomUUID();
         const mockPayment = {
-            id: paymentId,
+            paymentId: paymentId,
             currency: 'AUD',
             amount: 2000,
         };
@@ -50,6 +51,24 @@ describe('When the user requests the records for a specific payment', () => {
 
         expect(result.statusCode).toBe(404);
         expect(JSON.parse(result.body)).toEqual({ error: `Payment not found for paymentId: ${paymentId}` });
+
+        expect(getPaymentMock).toHaveBeenCalledWith(paymentId);
+    });
+
+    it('Returns 500 error when ann unknown error occurs retrieving a specific payment', async () => {
+        const paymentId = randomUUID();
+        const getPaymentMock = jest.spyOn(payments, 'getPayment').mockResolvedValueOnce(
+            Promise.reject(new Error('Database error'))
+        );
+
+        const result = await handler({
+            pathParameters: {
+                id: paymentId
+            },
+        } as unknown as APIGatewayProxyEvent);
+
+        expect(result.statusCode).toBe(500);
+        expect(JSON.parse(result.body)).toEqual({ error: `An error occurred while retrieving the payment - ${paymentId}` });
 
         expect(getPaymentMock).toHaveBeenCalledWith(paymentId);
     });

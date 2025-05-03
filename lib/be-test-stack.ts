@@ -3,6 +3,7 @@ import { Cors, LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 
 export class BeTestStack extends cdk.Stack {
@@ -40,10 +41,21 @@ export class BeTestStack extends cdk.Stack {
     }
 
     createLambda = (name: string, path: string) => {
-        return new NodejsFunction(this, name, {
+        const lambdaFunction = new NodejsFunction(this, name, {
             functionName: name,
             runtime: Runtime.NODEJS_16_X,
             entry: path,
         });
+        
+        // Add SSM GetParameter permissions for all parameters in the account
+        lambdaFunction.addToRolePolicy(
+            new iam.PolicyStatement({
+                actions: ['ssm:GetParameter'],
+                resources: [`arn:aws:ssm:${this.region}:${this.account}:parameter/*`],
+                effect: iam.Effect.ALLOW,
+            })
+        );
+        
+        return lambdaFunction;
     };
 }

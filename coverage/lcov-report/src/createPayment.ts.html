@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -94,67 +94,76 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { buildResponse, parseInput } from './lib/apigateway';
 import { createPayment, Payment, PaymentRequest } from './lib/payments';
 import { generatePaymentId } from './generator';
 import { paymentSchema } from './paymentSchema';
-import { Schema, ZodError } from 'zod';
 &nbsp;
 export const handler = async (event: APIGatewayProxyEvent): Promise&lt;APIGatewayProxyResult&gt; =&gt; {
     const paymentRequest = parseInput(event.body || '{}') as PaymentRequest;
 &nbsp;
-    try {
-        paymentSchema.parse(paymentRequest);
-    } catch (error) {
-        if (error instanceof ZodError) {
-            const errorMessage = error.errors.map((e) =&gt; e.message).join(', ');
-            return buildResponse(422, { error: errorMessage });
+    // Validate the payment request using Zod schema.
+    const validatedPaymentRequest = paymentSchema.safeParse(paymentRequest);
+&nbsp;
+    if (!validatedPaymentRequest.success) {
+        const errorMessage = validatedPaymentRequest.error.errors.map((e) =&gt; e.message).join(', ');
+        return buildResponse(422, { error: errorMessage });
+    } else {
+        // Generate a unique ID for the payment.
+        const paymentId = generatePaymentId();
+&nbsp;
+        const payment: Payment = {
+            paymentId: paymentId, // Ignore the paymentId from the request
+            amount: validatedPaymentRequest.data.amount,
+            currency: validatedPaymentRequest.data.currency,
+        };
+        
+        try {
+            const _ = await createPayment(payment);
+            return buildResponse(201, { result: payment.paymentId });
+        } catch (error) {
+            console.error(`Error creating payment: ${error}`);
+            return buildResponse(500, { error: `Failed to create payment - ${paymentId}. Please try again later.` });
         }
     }
-&nbsp;
-    // Generate a unique ID for the payment.
-    const paymentId = generatePaymentId();
-&nbsp;
-    const payment: Payment = {
-        id: paymentId,
-        amount: paymentRequest.amount,
-        currency: paymentRequest.currency,
-    };
-    
-    await createPayment(payment);
-    return buildResponse(201, { result: payment.id });
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -163,7 +172,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise&lt;APIGatewa
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-02T18:20:58.641Z
+                at 2025-05-03T15:39:16.741Z
             </div>
         <script src="../prettify.js"></script>
         <script>

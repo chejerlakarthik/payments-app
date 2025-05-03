@@ -16,6 +16,5 @@ export const paymentSchema = z.object({
     .positive({ message: "Payment amount must be >= 0" }),
     
     currency: z.string({ required_error: "Payment currency is required" })
-    .min(3, { message: "Currency should be 3 characters long" })
-    .max(3, { message: "Currency should be 3 characters long" }),
+    .length(3, { message: "Currency should be 3 characters long" })
 });

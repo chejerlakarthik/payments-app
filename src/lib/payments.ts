@@ -1,10 +1,12 @@
 import { DocumentClient } from './dynamodb';
 import { GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 
+const PaymentsTableName = 'PaymentsTable';
+
 export const getPayment = async (paymentId: string): Promise<Payment | null> => {
     const result = await DocumentClient.send(
         new GetCommand({
-            TableName: 'Payments',
+            TableName: PaymentsTableName,
             Key: { paymentId },
         })
     );
@@ -12,12 +14,24 @@ export const getPayment = async (paymentId: string): Promise<Payment | null> => 
     return (result.Item as Payment) || null;
 };
 
-export const listPayments = async (): Promise<Payment[]> => {
-    const result = await DocumentClient.send(
-        new ScanCommand({
-            TableName: 'Payments'
+export const listPayments = async (currency?: String): Promise<Payment[]> => {
+    // If a currency is provided, filter the payments by that currency else return all payments.
+    const scanCommand = currency
+        ? new ScanCommand({
+            TableName: PaymentsTableName,
+            FilterExpression: "#currency = :currency",
+            ExpressionAttributeNames: {
+                "#currency": "currency",
+            },
+            ExpressionAttributeValues: {
+                ":currency": currency,
+            }
         })
-    );
+        : new ScanCommand({
+            TableName: PaymentsTableName
+        });
+
+    const result = await DocumentClient.send(scanCommand);
 
     return (result.Items as Payment[]) || [];
 };
@@ -25,17 +39,17 @@ export const listPayments = async (): Promise<Payment[]> => {
 export const createPayment = async (payment: Payment) => {
     await DocumentClient.send(
         new PutCommand({
-            TableName: 'Payments',
+            TableName: 'PaymentsTable',
             Item: payment,
         })
     );
 };
 
 export type Payment = {
-    id: string;
+    paymentId: string;
     amount: number;
     currency: string;
 };
 
-// Create a new type without the 'id' property. We want to control the ID format.
-export type PaymentRequest = Omit<Payment, 'id'>;
+// Create a new type without the 'paymentId' property. We want to control the ID format.
+export type PaymentRequest = Omit<Payment, 'paymentId'>;
