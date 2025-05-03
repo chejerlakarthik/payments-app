@@ -36,9 +36,11 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
             }
         };
     } catch (error) {
+        const errorMessage = `An error occurred while retrieving the payment - ${paymentId}`;
+        logger.error(errorMessage);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: `An error occurred while retrieving the payment - ${paymentId}` }),
+            body: JSON.stringify({ error: errorMessage }),
         };
     }
 };

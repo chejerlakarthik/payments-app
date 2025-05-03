@@ -1,0 +1,122 @@
+{"level":"error","message":"Payment not found for paymentId: 81fd44de-39ed-40db-8b7d-2de2225e375a","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 9185f6bb-63b0-4c55-b094-0f9493cf9593","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 381c1e7c-0ea9-4030-9261-756247d8a287","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 38dc4cec-729e-498a-a5c3-5e4265160c6d","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: ae8e23e7-5e64-4922-9bea-4ded2608900a","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 99a1be25-6554-48f4-af28-071e8364bbea","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: d228e96d-9201-456d-a80f-ace5f821f4f3","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 3dded642-bb48-4411-920e-d9b02717f7ee","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 4e8f9eb6-5622-46ed-8c82-5545f0182f92","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 26eb9db0-54fb-464b-9fbd-8da3260b72ac","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: e147f89d-fa40-40a5-be59-90111d7a1e1d","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: b2242b6f-705a-4d24-8117-475a644c9cfc","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: b6f36032-efa6-4906-bb82-cc23e6f78d31","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 9702b5a7-ef83-4eae-adad-19a0a60e798a","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 7ba9caef-3190-41a5-aaf4-dd58f7c6846f","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 2ffa12e6-3331-48a9-b069-4178f35fa155","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: dab52d6c-b4c9-4ab7-8605-ddbf2ed1f131","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 48dfaabc-d600-4b87-b540-e8c0b6621a43","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 4821ff91-d2fb-4b07-bf79-74f98a1e00e6","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: af8bbfd0-7085-49df-ba86-0f8b6821406f","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Error listing payments: Error: Database error","service":"ofx-payments"}
+{"level":"error","message":"Error creating payment: Error: Database error","service":"ofx-payments"}
+{"level":"error","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required","service":"ofx-payments"}
+{"level":"error","message":"Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long","service":"ofx-payments"}
+{"level":"error","message":"Payment not found for paymentId: 1876a24d-f5ea-4703-8d93-2cb56d2aaaff","service":"ofx-payments"}
+{"level":"error","message":"An error occurred while retrieving the payment - 6f4ea97a-8ef7-4868-a3ed-d245cf2b4c63","service":"ofx-payments"}

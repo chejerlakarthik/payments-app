@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 /**
- * Schema for validating payment requests. The error messages are customized for each field to be more meaningful 
+ * Schema for validating payment requests. The error messages are customized for each field 
+ * to be more meaningful 
  * in the context of the application.
  * @param {string} id - The unique identifier for the payment (optional).
  * @param {number} amount - The amount of the payment (required).

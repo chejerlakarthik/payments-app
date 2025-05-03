@@ -1,4 +1,5 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
+import { logger } from '../logger';
 
 export const buildResponse = (statusCode: number, body: Object): APIGatewayProxyResult => {
     return {
@@ -15,7 +16,7 @@ export const parseInput = (body: string): Object => {
     try {
         return JSON.parse(body);
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         return {};
     }
 };

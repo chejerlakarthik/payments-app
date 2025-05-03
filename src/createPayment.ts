@@ -13,7 +13,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
     if (!validatedPaymentRequest.success) {
         const errorMessage = validatedPaymentRequest.error.errors.map((e) => e.message).join(', ');
-        logger.error(`Validation error: ${errorMessage}`);
+        logger.error(`Invalid payment request ${JSON.stringify}: ${errorMessage}`);
         return buildResponse(422, { error: errorMessage });
     } else {
         // Generate a unique ID for the payment.
@@ -29,7 +29,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
             const _ = await createPayment(payment);
             return buildResponse(201, { result: payment.paymentId });
         } catch (error) {
-            console.error(`Error creating payment: ${error}`);
+            logger.error(`Error creating payment: ${error}`);
             return buildResponse(500, { error: `Failed to create payment - ${paymentId}. Please try again later.` });
         }
     }
