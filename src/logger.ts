@@ -31,7 +31,7 @@ export const logger = winston.createLogger({
   format: winston.format.json(),
   defaultMeta: { service: 'ofx-payments' },
   transports: [
-    dailyRotateFileTransport,
+    consoleTransport,
   ]
 });
 
