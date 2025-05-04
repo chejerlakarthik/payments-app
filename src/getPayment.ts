@@ -1,13 +1,13 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { getPayment } from './lib/payments';
 import { logger } from './logger';
-import { error } from 'console';
 
 /**
  * This function handles all requests to GET /payments/{id} endpoint.
  */
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const paymentId = event.pathParameters?.id;
+    // Routing should ensure that we never run into this. Regardless, code defensively.
     if (!paymentId) {
         return {
             statusCode: 400,

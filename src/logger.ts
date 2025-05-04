@@ -13,7 +13,6 @@ const fileFormat = winston.format.combine(
 const consoleTransport = new winston.transports.Console({
   format: winston.format.combine(
     winston.format.colorize(),
-    // winston.format.simple()
     fileFormat
   ),
 });
@@ -21,12 +20,8 @@ const consoleTransport = new winston.transports.Console({
 export const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service: 'ofx-payments' },
+  defaultMeta: { service: 'payments-app' },
   transports: [
     consoleTransport,
   ]
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.remove(consoleTransport);
-}

@@ -1,4 +1,13 @@
-import { z } from 'zod';
+import {z, ZodEnum} from 'zod';
+
+
+/**
+ * Schema to validate currency inputs. Including a few currencies only for illustration.
+ */
+export const currencySchema = z.enum(["USD", "EUR", "GBP", "AUD", "INR"], {
+    required_error: "Currency is required",
+    message: "Invalid or unsupported currency"
+});
 
 /**
  * Schema for validating payment requests. The error messages are customized for each field 
@@ -15,7 +24,6 @@ export const paymentSchema = z.object({
     
     amount: z.number({ required_error: "Payment amount is required" })
     .positive({ message: "Payment amount must be >= 0" }),
-    
-    currency: z.string({ required_error: "Payment currency is required" })
-    .length(3, { message: "Currency should be 3 characters long" })
+
+    currency: currencySchema
 });

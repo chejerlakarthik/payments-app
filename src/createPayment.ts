@@ -26,7 +26,8 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
         };
         
         try {
-            const _ = await createPayment(payment);
+            await createPayment(payment);
+            logger.info(`Payment created: ${payment.paymentId} - ${JSON.stringify(payment)}`);
             return buildResponse(201, { result: payment.paymentId });
         } catch (error: any) {
             logger.error(`Error creating payment: ${error.message}`);
