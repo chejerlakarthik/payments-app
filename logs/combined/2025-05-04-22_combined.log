@@ -1,0 +1,12 @@
+2025-05-04 22:03:01 [error]: Error listing payments: Error: Database error
+2025-05-04 22:03:01 [error]: Payment not found for paymentId: 218dc403-246d-43a4-9c90-4256a34d7109
+2025-05-04 22:03:01 [error]: An error occurred while retrieving the payment - 38602769-a5c4-4ac3-87fc-091172b22513
+2025-05-04 22:03:01 [error]: Error creating payment: Error: Database error
+2025-05-04 22:03:01 [error]: undefined
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Payment amount must be >= 0
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Payment amount is required
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Payment amount is required, Payment currency is required
+2025-05-04 22:03:01 [error]: Invalid payment request function stringify() { [native code] }: Currency should be 3 characters long

@@ -15,8 +15,8 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
     try {
         const payments = await listPayments(searchCurrency);
         return buildResponse(200, { data: payments });
-    } catch (error) {
-        logger.error(`Error listing payments: ${error}`);
+    } catch (error: any) {
+        logger.error(`Error listing payments: ${error.message}`);
         return buildResponse(500, { error: `An error occurred while retrieving the payments - ${error}` });
     }
 };

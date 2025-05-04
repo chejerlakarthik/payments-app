@@ -1,29 +1,40 @@
 import * as winston from 'winston';
+import 'winston-daily-rotate-file';
+
+const fileFormat = winston.format.combine(
+  winston.format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss',
+  }),
+  winston.format.printf(({ timestamp, level, message }) => {
+      return `${timestamp} [${level}]: ${message}`;
+  })
+);
+
+const consoleTransport = new winston.transports.Console({
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.simple()
+  ),
+});
+const dailyRotateFileTransport = new winston.transports.DailyRotateFile({
+  filename: '%DATE%_error.log',
+  datePattern: 'YYYY-MM-DD-HH',
+  maxSize: '2m',
+  dirname: './logs/error',
+  maxFiles: '14d',
+  level: 'error',
+  format: fileFormat
+});
 
 export const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
   defaultMeta: { service: 'ofx-payments' },
   transports: [
-    //
-    // - Write all logs with importance level of `error` or higher to `error.log`
-    //   (i.e., error, fatal, but not other levels)
-    //
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    //
-    // - Write all logs with importance level of `info` or higher to `combined.log`
-    //   (i.e., fatal, error, warn, and info, but not trace)
-    //
-    new winston.transports.File({ filename: 'combined.log' }),
-  ],
+    dailyRotateFileTransport,
+  ]
 });
 
-//
-// If we're not in production then log to the `console` with the format:
-// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-//
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }));
+  logger.remove(consoleTransport);
 }
