@@ -13,17 +13,9 @@ const fileFormat = winston.format.combine(
 const consoleTransport = new winston.transports.Console({
   format: winston.format.combine(
     winston.format.colorize(),
-    winston.format.simple()
+    // winston.format.simple()
+    fileFormat
   ),
-});
-const dailyRotateFileTransport = new winston.transports.DailyRotateFile({
-  filename: '%DATE%_error.log',
-  datePattern: 'YYYY-MM-DD-HH',
-  maxSize: '2m',
-  dirname: './logs/error',
-  maxFiles: '14d',
-  level: 'error',
-  format: fileFormat
 });
 
 export const logger = winston.createLogger({

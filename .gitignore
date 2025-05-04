@@ -4,6 +4,7 @@
 node_modules
 coverage
 .idea
+logs
 
 # CDK asset staging directory
 .cdk.staging
