@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { buildResponse } from './lib/apigateway';
 import { listPayments } from './lib/payments';
 import { logger } from './logger';
-import { currencySchema } from "./paymentSchema";
+import { querySchema } from "./paymentSchema";
 
 /**
  * 
@@ -11,15 +11,13 @@ import { currencySchema } from "./paymentSchema";
  * @returns 
  */
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    const searchCurrency = event.queryStringParameters?.currency;
+    const validQueryParams = querySchema.safeParse(event.queryStringParameters);
 
-    const validatedCurrency = currencySchema.safeParse(searchCurrency)
-
-    if (!validatedCurrency.success) {
-        return buildResponse(400, { error: validatedCurrency.error.message });
+    if (!validQueryParams.success) {
+        return buildResponse(400, { error: validQueryParams.error.issues });
     } else {
         try {
-            const payments = await listPayments(searchCurrency);
+            const payments = await listPayments(validQueryParams.data.currency);
             return buildResponse(200, { data: payments });
         } catch (error: any) {
             logger.error(`Error listing payments: ${error.message}`);

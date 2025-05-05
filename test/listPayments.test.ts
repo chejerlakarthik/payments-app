@@ -1,7 +1,7 @@
 import * as payments from '../src/lib/payments';
-import { randomUUID } from 'crypto';
-import { handler } from '../src/listPayments';
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import {randomUUID} from 'crypto';
+import {handler} from '../src/listPayments';
+import {APIGatewayProxyEvent} from 'aws-lambda';
 
 describe('When the user requests to list all payments', () => {
     it('Returns all payments', async () => {
@@ -59,6 +59,16 @@ describe('When the user requests to list all payments', () => {
         expect(listPaymentsMock).toHaveBeenCalledWith('USD');
     });
 
+    it('Returns a 400 error for an invalid currency filter', async () => {
+        const result = await handler({
+            queryStringParameters: {
+                currency: 'UDS',
+            },
+        } as unknown as APIGatewayProxyEvent);
+
+        expect(result.statusCode).toBe(400); // Validates response status code
+    });
+
     it('Returns a 500 response when an unknown error occurs', async () => {
         const listPaymentsMock = jest.spyOn(payments, 'listPayments').mockResolvedValueOnce(
             Promise.reject(new Error('Database error'))
@@ -71,7 +81,7 @@ describe('When the user requests to list all payments', () => {
         } as unknown as APIGatewayProxyEvent);
 
         expect(result.statusCode).toBe(500);
-        expect(JSON.parse(result.body)).toEqual({ error: `An error occurred while retrieving the payments - Error: Database error` });
+        expect(JSON.parse(result.body)).toEqual({ error: `An error occurred while retrieving the payments` });
         expect(listPaymentsMock).toHaveBeenCalledWith('USD');
     });
 });

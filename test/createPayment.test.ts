@@ -5,7 +5,7 @@ import { APIGatewayProxyEvent } from 'aws-lambda';
 
 describe('When the user creates a new payment', () => {
 
-    it('Returns a 201 response with the payment ID', async () => {it
+    it('Returns a 201 response with the payment ID', async () => {
         const mockPayment = {
             amount: 100,
             currency: 'USD',
@@ -35,7 +35,7 @@ describe('When the user creates a new payment', () => {
         expect(createPaymentMock).toHaveBeenCalledWith(paymentWithGenId);
     });
 
-    it('Returns a 500 response when an unknown error occurs', async () => {it
+    it('Returns a 500 response when an unknown error occurs', async () => {
         const mockPayment = {
             amount: 100,
             currency: 'USD',
@@ -73,7 +73,7 @@ describe('When the user creates a new payment', () => {
         const result = await handler(event);
 
         expect(result.statusCode).toBe(422);
-        expect(JSON.parse(result.body)).toEqual({ error: 'Payment amount is required, Payment currency is required' });
+        expect(JSON.parse(result.body)).toEqual({ error: 'Payment amount is required, Invalid or unsupported currency' });
     });
 
     it('Returns a 422 response if the payment amount is <= 0', async () => {
@@ -101,7 +101,7 @@ describe('When the user creates a new payment', () => {
         const result = await handler(event);
 
         expect(result.statusCode).toBe(422);
-        expect(JSON.parse(result.body)).toEqual({ error: 'Currency should be 3 characters long' });
+        expect(JSON.parse(result.body)).toEqual({ error: 'Invalid or unsupported currency' });
     });
 
     it('Returns a 422 response if the payment amount is missing', async () => {
@@ -128,7 +128,7 @@ describe('When the user creates a new payment', () => {
         const result = await handler(event);
 
         expect(result.statusCode).toBe(422);
-        expect(JSON.parse(result.body)).toEqual({ error: 'Currency should be 3 characters long' });
+        expect(JSON.parse(result.body)).toEqual({ error: 'Invalid or unsupported currency' });
     });
 
     it('Returns a 422 response if the payment request body is empty', async () => {
@@ -139,21 +139,21 @@ describe('When the user creates a new payment', () => {
         const result = await handler(event);
 
         expect(result.statusCode).toBe(422);
-        expect(JSON.parse(result.body)).toEqual({ error: 'Payment amount is required, Payment currency is required' });
+        expect(JSON.parse(result.body)).toEqual({ error: 'Payment amount is required, Invalid or unsupported currency' });
     });
 
-    it('Returns a 422 response if the payment currency length is not 3 characters', async () => {
+    it('Returns a 422 response if the payment currency is not supported', async () => {
         const event = {
             body: JSON.stringify({
                 amount: 100,
-                currency: 'US',
+                currency: 'AED',
             }),
         } as unknown as APIGatewayProxyEvent;
 
         const result = await handler(event);
 
         expect(result.statusCode).toBe(422);
-        expect(JSON.parse(result.body)).toEqual({ error: 'Currency should be 3 characters long' });
+        expect(JSON.parse(result.body)).toEqual({ error: 'Invalid or unsupported currency' });
     });
 });
 

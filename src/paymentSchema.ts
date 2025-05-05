@@ -1,12 +1,15 @@
 import { z } from 'zod';
 
-
 /**
  * Schema to validate currency inputs. Including a few currencies only for illustration.
  */
-export const currencySchema = z.enum(["USD", "EUR", "GBP", "AUD", "INR"], {
+const currencySchema = z.enum(["USD", "EUR", "GBP", "AUD", "INR"], {
     required_error: "Currency is required",
     message: "Invalid or unsupported currency"
+});
+
+export const querySchema = z.object({
+    currency: currencySchema.optional(),
 });
 
 /**

@@ -14,6 +14,8 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
             body: JSON.stringify({ error: 'Payment ID is required' }),
         };
     }
+
+    logger.info(`Getting payment with id: ${paymentId}`);
     
     try {
         const payment = await getPayment(paymentId);

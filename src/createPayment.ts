@@ -16,8 +16,11 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
         logger.error(`Invalid payment request ${JSON.stringify}: ${errorMessage}`);
         return buildResponse(422, { error: errorMessage });
     } else {
+        logger.info(`Payment request is valid: ${JSON.stringify(validatedPaymentRequest.data)}`);
         // Generate a unique ID for the payment.
         const paymentId = generatePaymentId();
+
+        logger.debug(`Generated payment ID: ${paymentId}`);
 
         const payment: Payment = {
             paymentId: paymentId, // Ignore the paymentId from the request
