@@ -1,15 +1,11 @@
 import { z } from 'zod';
 
 /**
- * Schema to validate currency inputs. Including a few currencies only for illustration.
+ * Schema to validate query parameters.
  */
-const currencySchema = z.enum(["USD", "EUR", "GBP", "AUD", "INR"], {
-    required_error: "Currency is required",
-    message: "Invalid or unsupported currency"
-});
-
 export const querySchema = z.object({
-    currency: currencySchema.optional(),
+    // Including only a few currencies only for illustration.
+    currency: z.enum(["USD", "EUR", "GBP", "AUD", "INR"], { message: "Invalid or unsupported currency"}).optional()
 });
 
 /**
@@ -28,5 +24,8 @@ export const paymentSchema = z.object({
     amount: z.number({ required_error: "Payment amount is required" })
     .positive({ message: "Payment amount must be >= 0" }),
 
-    currency: currencySchema
+    currency: z.enum(["USD", "EUR", "GBP", "AUD", "INR"], {
+        required_error: "Currency is required",
+        message: "Invalid or unsupported currency"
+    })
 });

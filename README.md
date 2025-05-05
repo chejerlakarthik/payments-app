@@ -12,6 +12,8 @@ The API handler for `getPayment` simply goes to the database to retrieve a payme
   
 Implement the handler so that the test now passes.
 
+![2_GetPayment.png](screenshots/2_GetPayment.png)
+
 ## Question 2
 The handler for `createPayment` allows users to enter a new payment into the database. In the current implementation, users get to choose their own ID for the payment. Unfortunately this can lead users to selecting values that aren't unique, creating problems when trying to store the results.
 
@@ -23,12 +25,16 @@ Update the `createPayment` handler so that is generates its own unique ID when c
 The endpoint `getPayment` allows users to request any payment based on a given ID. However, sometimes a user will send a request with no match.
 
 Update `getPayment` so that if a matching payment is not found in the database, it returns a `HTTP 404` response to the caller.
+
+![2_a_GetPayment_NotFound.png](screenshots/2_a_GetPayment_NotFound.png)
  
 ## Question 4
 When the `createPayment` endpoint is called, it's currently accepting any input sent to it by the user. This could lead to invalid or bad data being stored in our database.
   
 Update `createPayment` so that the request is validated before it's stored in the database. You should return a `HTTP 422` error to the caller if they provide you with data that isn't acceptable.
-  
+
+![1_a_Invalid_CreatePayment_Request.png](screenshots/1_a_Invalid_CreatePayment_Request.png)
+
 ## Question 5
 The `listPayments` endpoint allows callers to get a list of all payments they've submitted to OFX. API users are now asking for the ability to search based on currency. E.g. they want to be able to find a list of all SGD payments submitted to OFX.
   
@@ -38,3 +44,6 @@ Update the API so that users can fetch a list of payments by currency.
 
 ![4_ListPaymentsWithCurrencyFilter.png](screenshots/4_ListPaymentsWithCurrencyFilter.png)
 
+To retrieve all payments,
+
+![3_ListPayments.png](screenshots/3_ListPayments.png)

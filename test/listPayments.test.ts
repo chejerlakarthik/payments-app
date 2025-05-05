@@ -25,7 +25,10 @@ describe('When the user requests to list all payments', () => {
         
         const listPaymentsMock = jest.spyOn(payments, 'listPayments').mockResolvedValueOnce(mockPayments);
 
-        const result = await handler({} as unknown as APIGatewayProxyEvent);
+        const result = await handler(
+            {
+                queryStringParameters: {},
+            } as unknown as APIGatewayProxyEvent);
 
         expect(result.statusCode).toBe(200);
         expect(JSON.parse(result.body)).toEqual({ data: mockPayments });
